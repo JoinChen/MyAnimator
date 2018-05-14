@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'//匿名内部类
+apply plugin: 'android-aspectjx'//权限
+def cfg = rootProject.ext.configuration // 配置
+def libs = rootProject.ext.libraries // 库
+
+android {
+    compileSdkVersion cfg.compileVersion
+    defaultConfig {
+        resConfigs "zh-rCN"
+        applicationId "com.example.chen.myanimator"
+        minSdkVersion cfg.minSdk
+        targetSdkVersion cfg.targetSdk
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //防止shrink-resource使用时报错
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    buildTypes {
+        release {
+//            shrinkResources true //图片压缩
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    //引用第三方权限申请库
+    implementation 'com.ninetripods:aop-permission:1.0.1'
+    implementation "com.tbruyelle.rxpermissions2:rxpermissions:${libs.rxpermissions}"
+    implementation "org.xutils:xutils:${libs.xutils}"
+    implementation "io.reactivex.rxjava2:rxjava:${libs.rxjava}"
+    implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
+    // 衔接 Retrofit & RxJava
+    // 此处一定要注意使用RxJava2的版本
+    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${libs.rxjava2_adapter}"
+    // 支持Gson解析
+    implementation "com.squareup.retrofit2:converter-gson:${libs.gson}"
+    implementation "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
+    implementation "com.jakewharton.rxbinding2:rxbinding:${libs.rxbinding}"
+    implementation "com.jakewharton:butterknife:${libs.butterknife}"
+}

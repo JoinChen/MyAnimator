@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.ninetripods:aop-permission-1.0.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/aop-permission-1.0.1.aar/57881ae5b4195c99f36c13be958b5b00/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/aop-permission-1.0.1.aar/57881ae5b4195c99f36c13be958b5b00/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ninetripods/aop-permission/1.0.1/9a74587d12f4dc1dda2d5a9bac8455115d79ac7b/aop-permission-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
